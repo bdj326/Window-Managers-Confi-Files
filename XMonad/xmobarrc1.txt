@@ -1,0 +1,15 @@
+Config { font = "xft:Noto Sans Display Regular:pixelsize=16:antialias=true:hinting=true"
+       , bgColor = "black"
+       , fgColor = "grey"
+       , position = Top
+       , lowerOnStart = True
+       , commands = [ Run Weather "KSAF" ["-t","<station>: <tempF> F","-L","32","-H","90","--normal","green","--high","red","--low","lightblue"] 36000
+                    , Run Cpu ["-L","3","-H","50","--normal","green","--high","red"] 10
+                    , Run Memory ["-t","Mem: <usedratio>%"] 10
+                    , Run Com "uname" ["-s","-r"] "" 36000
+    		    , Run Date "%a %b %_d %Y %H:%M:%S" "date" 10
+                    ]
+       , sepChar = "%"
+       , alignSep = "}{"
+       , template = "%cpu% | %memory% | { <fc=#ee9a00>%date%</fc>}| %KSAF% | %uname%"
+       }
